@@ -7,15 +7,9 @@ document.getElementById('apiBTN').addEventListener('click',cargarAPI);
 //fecht API consumiendo un txt
 function cargarTxt(){
 
-    fetch('datos.txt').then(function(res){
-        return res.text();
-    
-    }).then(function(data){
-        console.log(data);
-        document.getElementById('resultado').innerHTML = data;
-    }).catch(function(error){
-        console.log(error);
-    })
+    fetch('datos.txt').then(res =>  res.text())
+    .then( data =>  document.getElementById('resultado').innerHTML = data)
+    .catch(error => console.log(error) )
 
 }
 
@@ -23,9 +17,8 @@ function cargarTxt(){
 
 function cargarJson(){
 
-    fetch('empleados.json').then(function(res){
-        return res.json();
-    }).then(function(data){
+    fetch('empleados.json').then(res =>res.json())
+    .then(data => {
         let html = `<table class="table table-primary mt-5">
                         <thead>
                         <tr>
@@ -35,7 +28,7 @@ function cargarJson(){
                     </thead>
                    
                     `;
-        data.forEach(function(empleado){
+        data.forEach(empleado => {
             html += `
             <tbody>
             <tr>
@@ -54,9 +47,8 @@ function cargarJson(){
 
 function cargarAPI(){
     
-    fetch('https://picsum.photos/list').then(function(res){
-        return res.json();
-    }).then(function(img){
+    fetch('https://picsum.photos/list').then(res =>  res.json())
+    .then(img => {
 
         let html =``;
         img.forEach(function(imagen){
